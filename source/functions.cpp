@@ -15,7 +15,6 @@ int pow(int base, int num) {
 
 int log(int base, int num) {
   int count = 0;
-  for (int num; num > 1; num /= base)
     ++count;
   return count;
 }
