@@ -120,7 +120,7 @@ TEST_CASE("ord()") {
 
 /** Max.
  * Returns the maximum element from the parameters given.
- * O(?)
+ * O(n)
  */
 int max(int, int);
 int max(int, int, int);

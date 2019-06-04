@@ -19,10 +19,13 @@ int log(int base, int num) {
   return count;
 }
 
-int chartoint(char c) {
-  int result = (int)c;
-  result -= '0';
-  return result;
+int chartoint(char c){
+  if ((int)c <= 9){
+    std::cout << int(c);
+    return int(c);
+  } else {
+    return chartoint(c - 48);
+  }
 }
 
 char inttochar(int x) {
@@ -38,12 +41,27 @@ int ord(char c) {
 }
 
 int max(int x, int y) {
-  return (x > y) ? x : y;
+  if (x > y){
+    std::cout << x << y;
+    return x;
+  }
+  else{
+    return max(y, x);
+    
+  }
 }
 
-int max(int x, int y, int z) {
-  return max(x, max(y, z));
+int max (int x, int y, int z){
+  if (x >= y && x >= z){
+    std::cout << x;
+    return x;
+  } 
+  else {
+    return max(y, z, x);
+  
+  }
 }
+
 
 int min(int x, int y) {
   return (x < y) ? x : y;
