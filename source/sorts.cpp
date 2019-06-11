@@ -1,6 +1,21 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "sorts.hpp"
 
+/* Helper Functions */
+
+void copy_arr(int* arr, int* temp, int n) {
+  for (int i = 0; i < n; i++) {
+    temp[i] = arr[i];
+  }
+}
+
+void swap(int* y, int* x) {
+  int temp;
+  temp = *y;
+  *y = *x;
+  *x = temp;
+}
+
 /** Bubble Sort
  *  O(n^2), Omega(n)
  */
@@ -17,6 +32,7 @@ void bubble_sort(int *arr, int n) {
   }
 }
 
+<<<<<<< HEAD
 void swap(int *y, int *x) {
   int temp;
   temp = *y;
@@ -26,6 +42,9 @@ void swap(int *y, int *x) {
 
 void selection_sort(int *arr, int n) {
 
+=======
+void selection_sort(int* arr, int n) {
+>>>>>>> upstream/master
   for (int i = 0; i < (n - 1); i++) {
     int min = i;
     for (int j = i + 1; j < n; j++) {
@@ -36,6 +55,7 @@ void selection_sort(int *arr, int n) {
   }
 }
 
+<<<<<<< HEAD
 void insertion_sort(int *arr, int n) {
   for (int i = 0; i < n; i++) {
     // Set j = i
@@ -44,11 +64,17 @@ void insertion_sort(int *arr, int n) {
     // -> arr[j] < arr[j-1]
     for (int j = i; j > 0 && arr[j] < arr[j - 1]; j--) {
       // then swap the elements
+=======
+void insertion_sort(int* arr, int n) {
+  for (int i = 0; i < n; i++) {
+    for (int j = i; j > 0 && arr[j] < arr[j - 1]; j--) {
+>>>>>>> upstream/master
       swap(&arr[j], &arr[j - 1]);
     }
   }
 }
 
+<<<<<<< HEAD
 /** Selection Sort
  * O(n^2), Omega(n^2), Theta(n^2)
  */
@@ -64,12 +90,32 @@ void insertion_sort(int *arr, int n) {
       {
         min = j;
       }
+=======
+void merge(int* arr, int n, int mid) {
+  int* temp = new int[n];
+  copy_arr(arr, temp, n);
+
+  int j = 0;
+  int k = mid;
+  for (int i = 0; i < n; i++) {
+    if (j >= mid) {
+      arr[i] = temp[k];
+      k++;
+    } else if (k >= n) {
+      arr[i] = temp[j];
+      j++;
+    } else if (temp[j] < temp[k]) {
+      arr[i] = temp[j];
+      j++;
+    } else {
+      arr[i] = temp[k];
+      k++;
+>>>>>>> upstream/master
     }
-    int temp = arr[i];
-    arr[i] = arr[min];
-    arr[min]=temp;
   }
+  delete[] temp;
 }
+<<<<<<< HEAD
 */
 
 /** Insertion Sort
@@ -148,4 +194,13 @@ void mergesort(int *arr, int n) {
     mergesort(arr + (n/2)+1, mid);
     merge(arr, n, mid);
   }
+=======
+
+void mergesort(int* arr, int n) {
+  if (n > 1) {
+    mergesort(arr, n / 2);
+    mergesort(arr + (n / 2), n - n / 2);
+    merge(arr, n, n / 2);
+  }
+>>>>>>> upstream/master
 }
